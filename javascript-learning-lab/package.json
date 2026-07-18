@@ -1,0 +1,20 @@
+{
+  "name": "javascript-learning-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "npm run test:js && npm run test:ts && npm run test:react",
+    "test:js": "node practice/run-tests.js solution",
+    "test:learn": "node practice/run-tests.js starter",
+    "test:ts": "tsc --noEmit -p practice/typescript/tsconfig.solution.json",
+    "test:react": "vitest run practice/react"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.2.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^26.1.0",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.7"
+  }
+}
