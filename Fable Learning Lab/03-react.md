@@ -597,8 +597,10 @@ function Clock() {
 ```
 The function you `return` from an effect is its cleanup — React calls it when the
 component unmounts and before the effect re-runs. Every subscription-like effect
-(intervals, event listeners, sockets) needs one; without it, unmounted components keep
-ticking and setting state, leaking memory and logging warnings.
+(intervals, event listeners, sockets) needs one; without it, the interval outlives the
+component and keeps calling `setNow`, leaking the timer and everything its closure holds.
+(React 18 removed the old "state update on an unmounted component" console warning, so
+this leak is now silent — another reason to write the cleanup by habit.)
 
 ### 19. Fetch on mount — with loading and error states
 
@@ -1329,7 +1331,8 @@ function TodoApp() {
 ```
 When several updates touch the same state, a reducer centralizes them: components emit
 *events*, one pure function holds all the transition logic (testable without React!).
-This is the exact typed reducer from the TypeScript file, problem 48 — and the mental
+This is the same discriminated-action reducer shape you typed in the TypeScript file
+(problem 48, there for a project list) — and the mental
 model behind Redux.
 
 ### 37. Context + reducer: app-level state
@@ -1503,7 +1506,7 @@ function App() {
 Error boundaries are the one place class components are still required (a hook version
 doesn't exist; libraries like `react-error-boundary` wrap this same pattern). They catch
 *render* errors of their children — not event handlers or async code, which you handle
-with try/catch (problems 19, 26). Wrap independent page sections so one failure doesn't
+with try/catch (problem 19 here; JavaScript file, problems 26–27). Wrap independent page sections so one failure doesn't
 take down the app.
 
 ---

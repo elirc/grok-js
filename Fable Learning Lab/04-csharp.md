@@ -51,7 +51,7 @@ Console.WriteLine(label);
 // On a US-culture machine: "Mouse costs $19.99 (order #00042)"
 
 // More format specifiers you'll actually use:
-Console.WriteLine($"{0.8567:P1}");            // 85.7 %  (percent)
+Console.WriteLine($"{0.8567:P1}");            // 85.7%  (percent; spacing varies by culture)
 Console.WriteLine($"{1234567.891:N2}");       // 1,234,567.89 (thousands separators)
 Console.WriteLine($"{DateTime.Now:yyyy-MM-dd}"); // 2026-07-02
 ```
@@ -411,7 +411,7 @@ new OrderService(new EmailNotifier()).PlaceOrder("Monitor");
 new OrderService(new SmsNotifier()).PlaceOrder("Cable");   // swap without touching OrderService
 ```
 Constructor injection of interfaces is *the* central pattern of ASP.NET Core — the
-framework's dependency-injection container will do the `new`-ing for you (problem 44).
+framework's dependency-injection container will do the `new`-ing for you (problem 41).
 It's also what makes testing easy: hand `OrderService` a fake notifier.
 
 ### 14. Records
@@ -850,7 +850,7 @@ compile-time catch matching.
 
 ### 28. Generics: write your own
 
-**Problem:** Write a generic `Repository<T>` base with an in-memory `List<T>`, `Add`,
+**Problem:** Write a generic `InMemoryStore<T>` class with an in-memory `List<T>`, `Add`,
 `GetAll`, and a `FindWhere(Func<T, bool>)` — usable for any entity type.
 
 **Solution:**
@@ -880,7 +880,7 @@ names.Add("hello");
 `Func<T, bool>` is a typed function value — "takes a T, returns bool" — which is how C#
 passes lambdas around (JS callbacks with a signature). You already used generics as a
 consumer (`List<T>`, `Dictionary<K,V>`); writing them yourself is the step toward the
-generic repository in problem 43.
+repository in problems 39–40.
 
 ### 29. Extension methods
 

@@ -21,28 +21,39 @@
 - Docker + docker-compose for consistent Postgres dev environment.
 - No overkill (no NestJS, no Next.js fullstack, no tRPC) — we want to show clear frontend/backend separation.
 
-## Project Structure
+## Project Structure (files actually in the repo)
 
+```
 grokbuildjs/
 ├── backend/                 # Express + Prisma API
-│   ├── src/
-│   │   ├── routes/          # API route handlers (controllers)
-│   │   ├── services/        # Business logic
-│   │   ├── prisma/          # Prisma schema + client
-│   │   └── ...
-├── frontend/                # React app (Vite)
+│   ├── package.json
+│   ├── prisma/schema.prisma # Prisma schema (PostgreSQL, DATABASE_URL from .env)
 │   └── src/
-│       ├── api/             # API client functions (TanStack Query friendly)
-│       ├── components/      # Reusable UI
-│       ├── hooks/           # Custom hooks
-│       └── pages/           # Route pages
-├── docker-compose.yml       # Postgres for local dev
+│       ├── index.ts         # Express app setup
+│       ├── routes/tasks.ts  # API route handlers + Zod validation
+│       └── services/taskService.ts  # Business logic
+├── frontend/                # React app (Vite)
+│   ├── package.json
+│   └── src/
+│       ├── main.tsx         # QueryClientProvider + root render
+│       ├── api/tasks.ts     # API client functions (TanStack Query friendly)
+│       └── pages/TasksPage.tsx
+├── coding-problems/problem-01-api.ts
+├── examples/                # narrated examples
+├── docker-compose.yml       # Postgres 16 for local dev
 ├── JOURNAL.md               # Thought process of a senior SWE
+├── PHASE2.md                # proposed next features (not built)
 └── README.md
+```
 
-## How to Run (After Setup)
+## Status (checked 2026-10-06): a read-along skeleton, not a runnable app
 
-See JOURNAL.md for the full thought process.
+The code files are the teaching core, but the scaffolding needed to run them is missing.
+The backend has no `tsconfig.json` or `.env`. The frontend has no `index.html`, Vite
+config, Tailwind config, or the `index.css` that `main.tsx` imports. Of the stack listed
+above, React Hook Form is not a dependency, and React Router is listed in `package.json` but never imported.
+Read the files in the order JOURNAL.md builds them. To run it, scaffold a fresh Vite app
+and Express project and move these files in.
 
 This project has **extensive comments** explaining:
 - Why we chose certain patterns

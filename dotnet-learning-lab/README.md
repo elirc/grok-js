@@ -13,21 +13,12 @@ Companion to the C# Basics folder. This collection focuses on .NET platform conc
 - For ASP.NET examples, read the comments even if you don't run a full web app immediately.
 
 ## Recommended Order
-Start after you have some comfort with C# language (from csharp-basics).
+Start after you have some comfort with the C# language (from `csharp-learning-lab`).
 
-Topics include:
-- Project structure and SDK
-- Dependency Injection
-- Configuration
-- Logging
-- File I/O and streams
-- HTTP and APIs (HttpClient, minimal APIs)
-- Entity Framework Core basics
-- Async patterns in .NET
-- Testing
-- Serialization
-- Middleware and hosting
-- Performance and diagnostics
+The 12 topics, in file order (each has a basic file and a `-2.0` file):
+01 project structure, 02 dependency injection, 03 configuration, 04 logging,
+05 file I/O, 06 HttpClient, 07 minimal APIs, 08 Entity Framework Core,
+09 middleware, 10 testing, 11 serialization, 12 background services.
 
 ## Notes
 - All code is educational. Some snippets are self-contained; others assume a standard .NET 8+ project.
@@ -40,17 +31,17 @@ This folder builds on the C# language knowledge to teach the broader .NET ecosys
 
 ## Expanded Examples and Coding Problems
 
-The examples/ folder is part of the literal ~20x expansion (1,500+ total narrated examples project-wide). Topics include DI lifetimes, EF Core efficient querying, minimal APIs, HttpClient resilience, background services, and more platform patterns. All written to help junior engineers understand not just the syntax but the reasoning.
+`examples/` holds 162 narrated example files (about 1,600 across all grokjs labs). Topics include DI lifetimes, EF Core efficient querying, minimal APIs, HttpClient resilience, background services, and more platform patterns. All written to help junior engineers understand not just the syntax but the reasoning.
 
 ---
 
 ## New Teaching Approaches (Added 2026)
 
-Core .NET topics now also include:
+Some .NET topics also include:
 
 - `-think-predict.cs`
 - `-bug-hunt.cs`
 - `-narrative.cs`
 
-Same philosophy, different learning style for DI, EF, logging, minimal APIs, testing, etc.
+All three exist for 02 DI, 04 logging, 05 file I/O, 07 minimal APIs, 08 EF Core, 09 middleware, and 12 background services. 01 project structure and 10 testing have a think-predict file only. 03, 06, and 11 have none.
 

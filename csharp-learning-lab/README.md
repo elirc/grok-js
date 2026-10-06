@@ -19,16 +19,12 @@ Each file teaches **one core concept** using plain C# (no external packages unle
 ## Recommended Order
 Follow the numbered files sequentially.
 
-Files cover:
-- Variables, types, strings, numbers, bools
-- Conditionals, loops
-- Arrays, Lists, Dictionaries
-- Methods, parameters, return values
-- Classes, objects, properties
-- Inheritance, interfaces, polymorphism
-- Exception handling
-- Basic async/await
-- And more...
+The 19 topics, each with a basic file and a `-2.0` file:
+- 01–04: variables and data types, strings and text, numbers and math, booleans and logic
+- 05–08: conditionals (if/switch), loops, arrays and collections, methods
+- 09–11: classes and objects, inheritance, exception handling
+- 12–16: async/await, LINQ, generics, records, delegates and events
+- 17–19: nullability, advanced LINQ, pattern matching
 
 All files use .cs extension. To run, create a simple console project and copy/paste the relevant code.
 
@@ -37,19 +33,17 @@ All files use .cs extension. To run, create a simple console project and copy/pa
 - .NET framework/ecosystem concepts are in the sibling `dotnet-learning-lab` folder.
 - Use Visual Studio, VS Code + C# Dev Kit, or online tools like .NET Fiddle for experiments.
 
-Good luck! This will give you a solid foundation in C#.
-
 ---
 
 ## Expanded Examples and Coding Problems
 
-The examples folder has been massively expanded as part of the project-wide 20x increase in narrated examples (total ~1,500+ files). New and expanded examples cover records, LINQ pipelines, nullability, pattern matching, generics, delegates/events, and many more C# language features. Each is written so a junior can read the code and then the explanation to reinforce understanding.
+`examples/` holds 169 narrated example files (about 1,600 across all grokjs labs). They cover records, LINQ pipelines, nullability, pattern matching, generics, delegates/events, and many more C# language features. Each is written so a junior can read the code and then the explanation to reinforce understanding.
 
 ---
 
 ## New Teaching Approaches (Added 2026)
 
-Many topics have three additional files using alternate teaching styles:
+Nine topics (01, 02, 05, 08–13) have three additional files using alternate teaching styles, and 06 has a think-predict file only:
 
 - `XX-...-think-predict.cs` — Predict outputs and behavior.
 - `XX-...-bug-hunt.cs` — Find/fix bugs.

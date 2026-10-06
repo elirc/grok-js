@@ -6,7 +6,7 @@ These drills practice browser APIs with automated tests through `jsdom`. That me
 
 1. Open `starter.js`.
 2. Implement one function at a time.
-3. Run `node practice/run-tests.js starter dom-browser`.
+3. Run `node practice/run-tests.js starter dom-browser` from `javascript-learning-lab`. Run `npm install` once first: unlike the other core-js drills, these tests import `jsdom`, and without it they fail with `ERR_MODULE_NOT_FOUND` no matter what your code does.
 4. Use `expected-output.md` for sample behavior.
 5. Compare with `solution.js` after you attempt the drills.
 

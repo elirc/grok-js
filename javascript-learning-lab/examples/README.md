@@ -8,16 +8,24 @@ The top-level files are the higher-signal examples worth opening first:
 
 - `advanced-closures.js`
 - `advanced-promises.js`
+- `example-arrays-iteration.js`
+- `example-es6-modern.js`
 - `example-js-array-methods-transform.js`
 - `example-js-async-await-patterns.js`
+- `example-js-closures-and-scope.js`
+- `example-js-destructuring-and-spread.js`
 - `example-js-dom-and-events.js`
-- `example-js-fetch-and-error-handling.js`
+- `example-js-error-boundaries-and-fallbacks.jsx`
 - `example-js-event-loop-and-microtasks.js`
+- `example-js-fetch-and-error-handling.js`
 - `example-js-functions-and-defaults.js`
 - `example-js-memoization-and-performance.js`
 - `example-js-mutability-and-references.js`
 - `example-js-promises-and-error-propagation.js`
 - `example-js-proxy-and-reflect.js`
+- `example-js-template-literals-and-strings.js`
+- `example-js-variables-declaration.js`
+- `example-performance.js`
 
 Use these when you want a fuller example with a real pattern and explanation.
 

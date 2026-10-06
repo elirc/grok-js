@@ -12,9 +12,9 @@ Additional folders add practice drills, React notes, TypeScript notes, and runna
 
 ## What This Project Is
 
-- 40+ numbered core `.js` files
+- 40 numbered core lessons (`01`–`40`); 01–30 also have `-2.0` companions and most have think-predict / bug-hunt / narrative variants (see the end of this file)
 - Each file = one lesson or tiny project
-- Every file is heavily commented for learning
+- Every file is heavily commented for learning; lessons 01–30 end with the teaching sections listed below, while 31–40 are denser advanced reference files without them
 - Examples use real-life beginner scenarios: user profiles, shopping carts, todo lists, login checks, price calculators, fake dashboards, product filters, etc.
 - Designed to be read, typed, and experimented with
 - `practice/` adds starter code, tests, expected output, and worked solutions
@@ -66,6 +66,12 @@ node practice/run-tests.js solution arrays
 `npm test` runs all worked solutions and type/component checks.
 
 `npm run test:learn` runs the starter files and should fail until you implement them.
+
+The `node practice/run-tests.js ...` commands use Node's built-in test runner, so the
+arrays, objects, functions, closures, and async drills work before `npm install`. The
+dom-browser drill (jsdom), `test:ts` (TypeScript), and `test:react` (Vitest) need it.
+Note that `test:ts` type-checks the *solution* files only — see `CURRICULUM.md`, Phase 3,
+for how to check your own TypeScript starter.
 
 Practice topics:
 - arrays
@@ -147,6 +153,12 @@ You can skip around later, but start from the beginning.
 
 The main purpose is learning the JavaScript, not building a full website.
 
+### Files that won't run as-is under Node
+- `-bug-hunt` files contain planted bugs, so some throw on purpose.
+- Many `-2.0` files are collections of snippets that use variables they never declare or redeclare the same name (`14`, `15`, `16`, `18`, `19`, `20`, `28`, `29`; `22`–`25` also need a browser); read them, or copy one snippet into a scratch file with the data it needs.
+- Advanced lessons `33`, `34`, `37`, and `39` stop with an error (duplicate/undeclared names, `fetch` to a relative URL like `/api/data`). Read them as reference.
+- `package.json` sets `"type": "module"`, so every `.js` file here runs as an ES module (strict mode, `import` allowed, no `require`).
+
 ---
 
 ## How to Use the Comments
@@ -223,26 +235,15 @@ By the end of this lab you will understand:
 - Two small app-style projects (todo + shopping cart)
 - Fetching data and async/await
 - Error handling with try/catch
-
----
-
-## Final Advice
-
-Read one file per session at first.  
-Really play with the code.  
-Type things. Break things. Fix them.
-
-This is how real developers learned JavaScript.
-
-Good luck! You've got this.
+- Advanced (31–40): closures, prototypes/classes, ES modules vs CommonJS, advanced promises, the event loop, memoization/debounce/throttle, Map/Set, Symbol/Proxy/Reflect, iterators/generators, memory leaks and GC
 
 ---
 
 ## Expanded Examples and Coding Problems
 
-This lab (including React & TS subfolders) has been massively expanded with many new example files. Each example now follows a consistent format: runnable (or near-runnable) code immediately followed by detailed English narration explaining what the code does, why it is written that way, and what concepts a junior engineer should internalize.
+Each example file follows one format: runnable (or near-runnable) code immediately followed by English narration explaining what the code does and why it is written that way.
 
-There are now **hundreds of focused example files** (part of a project-wide 20x expansion of narrated examples) covering:
+Counts: `examples/` holds 20 curated files plus 360 generated variants in `examples/generated/`; `react-basics/examples/` holds 170 files and `typescript-basics/examples/` 161. They cover:
 - Core JS (variables, mutability, strings, arrays, functions, async, closures, event loop, DOM, fetch, error handling, performance, etc.)
 - React patterns (props, composition, hooks, custom hooks, forms, error boundaries)
 - TypeScript (types, generics, utility types, guards, narrowing)
@@ -251,16 +252,13 @@ There are now **hundreds of focused example files** (part of a project-wide 20x 
 The goal of these narrated examples is reinforcement and deeper understanding after (or alongside) the main lessons.
 
 ### javascript-learning-lab/coding-problems/
-- problem-closures.js, problem-async.js (expanded)
-- problem-arrays.js (NEW), problem-objects.js (NEW), problem-functions.js (NEW)
-- problem-dom-browser.js (NEW)
+- problem-closures.js, problem-async.js
+- problem-arrays.js, problem-objects.js, problem-functions.js
+- problem-dom-browser.js
 - For runnable drills with tests, use `practice/core-js/`
 
 ### javascript-learning-lab/examples/
-- advanced-closures.js, advanced-promises.js (expanded)
-- example-arrays-iteration.js (NEW)
-- example-es6-modern.js (NEW)
-- example-performance.js (NEW)
+- 20 curated files, listed in `examples/README.md`
 - Generated repetition examples live under `examples/generated/` so the main examples folder stays readable.
 
 ### javascript-learning-lab/practice/
@@ -270,7 +268,7 @@ The goal of these narrated examples is reinforcement and deeper understanding af
 
 ### react-basics/ (subfolder)
 coding-problems/ and examples/ added:
-- problem-01-components-props.jsx ... problem-06-context-patterns.jsx (6+)
+- problem-01-components-props.jsx ... problem-06-context-patterns.jsx (6 files)
 - example-state-patterns.jsx, example-hooks-deep.jsx, example-data-fetching.jsx, example-testing-concepts.jsx, example-patterns-advanced.jsx
 
 ### typescript-basics/
@@ -293,7 +291,8 @@ In addition to the classic numbered lessons, -2.0 companions, coding-problems, e
 
 These new files follow the same "one focused concept" rule and use realistic examples.
 
-Topics that received new style variants (partial list):
-01 variables, 02 strings, 03 numbers, 04 booleans, 05 conditionals, 06 arrays-basics, 07/08 array methods, 09 objects, 11-17 functions/scope/loops, 28-29 async/error-handling and more.
+Topics with all three variants (22): 01–09, 11, 13, 15–21, 25, 28–30.
+Topics with only a think-predict variant: 12 and 14.
+No variants: 10, 22–24, 26, 27, and the advanced lessons 31–40.
 
 Use the classic file for clear teaching, then rotate through the three new styles for deeper retention.

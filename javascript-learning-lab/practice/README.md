@@ -12,6 +12,8 @@ Each topic has:
 - `expected-output.md` - sample calls and expected results
 - `<topic>.test.js` - automated tests
 
+(TypeScript topics use `.ts` files and a `*.type-test.ts`; React topics use `.jsx` files and a `<topic>.test.jsx`.)
+
 ## Commands
 
 Run from `javascript-learning-lab`:
@@ -30,6 +32,12 @@ node practice/run-tests.js solution arrays
 `npm test` runs all solution checks and should pass.
 
 `npm run test:learn` runs tests against starter files. It should fail until you implement the starter functions.
+
+**Check without installing anything:** `node practice/run-tests.js solution` should report
+`# pass 49` / `# fail 1`. The one failure is the dom-browser file, which needs `jsdom`
+from `npm install`. The other five core-js topics run on Node's built-in test runner
+alone. `node practice/run-tests.js starter <topic>` is your per-topic check: it fails
+until you implement that topic's starter.
 
 ## Core JavaScript Topics
 

@@ -1342,7 +1342,7 @@ export class ApiProjectRepository implements ProjectRepository {
   }
 }
 
-// Anywhere in the app:
+// Anywhere in the app (import.meta.env is Vite's; its types come from "vite/client"):
 const repo: ProjectRepository =
   import.meta.env?.MODE === "test" ? new InMemoryProjectRepository()
                                    : new ApiProjectRepository();
@@ -1456,7 +1456,10 @@ class TypedEmitter {
   private handlers: { [K in keyof EventMap]?: Array<(payload: EventMap[K]) => void> } = {};
 
   on<K extends keyof EventMap>(event: K, handler: (payload: EventMap[K]) => void): void {
-    (this.handlers[event] ??= []).push(handler);
+    // TS can't correlate `handlers[event]` with K (it sees a union of array types whose
+    // `push` accepts `never`), so assert the per-key type once, inside the class.
+    const list = (this.handlers[event] ??= []) as Array<(payload: EventMap[K]) => void>;
+    list.push(handler);
   }
 
   emit<K extends keyof EventMap>(event: K, payload: EventMap[K]): void {
@@ -1472,7 +1475,9 @@ bus.on("project:deleted", (p) => console.log(p.id));        // p: { id: number }
 ```
 One `EventMap` interface drives everything: event names come from `keyof`, payload types
 from indexed access. This generic-constraint pattern (`K extends keyof Map`) is the same
-machinery behind typed `addEventListener` and every typed pub/sub library.
+machinery behind typed `addEventListener` and every typed pub/sub library. The one cast in
+`on` is the known limit of this pattern: callers stay fully checked, and the unsafety is
+confined to a single line inside the class.
 
 ### 48. Typing a state reducer
 

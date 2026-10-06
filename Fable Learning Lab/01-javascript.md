@@ -4,7 +4,11 @@ Ordered easiest-first. Sections: Fundamentals (1–8), Arrays & Objects (9–18)
 Functions in Depth (19–24), Async & HTTP (25–32), Errors & Robustness (33–38),
 Practical Utilities (39–44), Building a CRUD Data Layer (45–50).
 
-Run these in Node (`node file.js`) or the browser console.
+Run these in Node (`node file.js`) or the browser console. Three exceptions: problems
+36 (last `safeParse` line) and 44 use `localStorage`, which only exists in the browser;
+problems 48 and 50 use `export`/`import`, so save them as `.mjs` files to run in Node.
+Problems 29–32 call the public jsonplaceholder.typicode.com API and need a network
+connection (Node 18+ has `fetch` built in).
 
 ---
 
@@ -136,13 +140,14 @@ Modern JS code uses array methods (`map`, `filter`, `reduce`) for transforms and
 
 ### 7. Truthy, falsy, `||` vs `??`
 
-**Problem:** JavaScript has exactly six falsy values — list them. Then explain the bug in
+**Problem:** List the six falsy values you'll meet in everyday code. Then explain the bug in
 `const pageSize = settings.pageSize || 10;` when the user sets `pageSize: 0`, and fix it.
 
 **Solution:**
 ```js
-// The six falsy values:
+// The six everyday falsy values:
 // false, 0, "" (empty string), null, undefined, NaN
+// (The full list adds two rarities: -0 and 0n, the BigInt zero.)
 // Everything else is truthy — including "0", [], and {}.
 
 const settings = { pageSize: 0 };
@@ -538,8 +543,8 @@ timer.start();
 
 **Solution:**
 ```js
-// The inner `function () {}` gets its own `this` (undefined in strict mode / the
-// global object otherwise) — it is NOT the timer object.
+// The inner `function () {}` gets its own `this`, set by whoever calls it — here the
+// timer machinery (`window` in browsers, a Timeout object in Node) — NOT the timer object.
 
 // Fix 1 (modern default): arrow functions don't have their own `this`;
 // they inherit it from the enclosing scope.
@@ -933,7 +938,8 @@ function safeParse(json, fallback = null) {
 
 console.log(safeParse('{"a":1}'));            // { a: 1 }
 console.log(safeParse("not json", {}));       // {}
-console.log(safeParse(localStorage?.getItem?.("settings"), {})); // {} if missing/corrupt
+// Browser only — in Node `localStorage` is undeclared, and `?.` can't guard that:
+// console.log(safeParse(localStorage.getItem("settings"), {})); // {} if missing/corrupt
 
 // Bonus: JSON round-trip loses things — know your serialization limits
 const obj = { date: new Date(), fn: () => 1, missing: undefined };
@@ -1238,7 +1244,7 @@ id, ignores attempts to change `id`) and `remove(id)` (returns `true`/`false`).
 // inside the object returned by createStore():
     update(id, changes) {
       const exists = tasks.some((t) => t.id === id);
-      if (!exists) throw new Error(`Task ${id} not found`);
+      if (!exists) throw new NotFoundError("Task", id); // class from problem 34
 
       tasks = tasks.map((t) =>
         t.id === id

@@ -12,8 +12,9 @@ No frameworks, no complex setup.
 
 ## What This Project Is
 
-- 30+ separate `.py` files
+- 30 numbered lessons (`01`–`30`), plus think-predict / bug-hunt / narrative variants for some topics
 - Each file = one lesson or tiny project
+- All 30 core lessons run with plain `python <file>` (checked 2026-10-06). `23` waits for keyboard input, and `22`, `26`, and `30` write scratch files (`data.json`, `example.txt`, `notes.txt`) into the current folder, so delete those afterwards rather than committing them
 - Every file is heavily commented for learning
 - Examples use real-life beginner scenarios: user profiles, shopping carts, todo lists, login checks, price calculators, filtering data, formatting names, etc.
 - Designed to be read, typed, and experimented with
